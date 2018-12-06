@@ -6,7 +6,7 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:59:03 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/05 16:49:32 by shamidan         ###   ########.fr       */
+/*   Updated: 2018/12/06 12:36:45 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	str = b;
 	while (i < len)
 	{
-		str[i] = c;
+		str[i] = (char)c;
 		i++;
 	}
 	return (str);
