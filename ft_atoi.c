@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 12:49:51 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/07 11:59:17 by shamidan         ###   ########.fr       */
+/*   Created: 2018/12/10 10:15:41 by shamidan          #+#    #+#             */
+/*   Updated: 2018/12/10 12:54:26 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memccpy(void *d, const void *s, int c, size_t n)
+int		ft_atoi(const char *c)
 {
-	char	*source;
-	char	*destination;
-	size_t	i;
-	char	charac;
+	int	nbr;
+	int i;
+	int sign;
 
+	nbr = 0;
 	i = 0;
-	destination = (char *)d;
-	source = (char *)s;
-	charac = (char)c;
-	while (i < n)
+	sign = 1;
+	if (!c[i])
+		return (0);
+	while (c[i] == '\n' || c[i] == '\r' || c[i] == '\v'
+			|| c[i] == '\f' || c[i] == '\t' || c[i] == ' ')
+		i++;
+	if (c[i] == '-' || c[i] == '+')
 	{
-		destination[i] = source[i];
-		if (source[i] == charac)
-		{
-			return (destination + (i + 1));
-		}
+		if (c[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (NULL);
+	while (c[i] >= '0' && c[i] <= '9')
+	{
+		nbr = (nbr * 10) + (c[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }

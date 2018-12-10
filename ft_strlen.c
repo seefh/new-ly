@@ -6,11 +6,11 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:37:41 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/05 14:00:19 by shamidan         ###   ########.fr       */
+/*   Updated: 2018/12/07 12:02:53 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 size_t		ft_strlen(const char *s)
 {
