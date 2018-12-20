@@ -6,7 +6,7 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:50:45 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/20 16:26:37 by shamidan         ###   ########.fr       */
+/*   Updated: 2018/12/20 17:51:49 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	j;
 
 	str = (char *)s;
-	dest = malloc(len + start);
+	dest = malloc((*str) * len + start);
 	i = 0;
 	j = start;
 	while (j < len + start)
