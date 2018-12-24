@@ -5,13 +5,14 @@
 char    *ft_itoa(int n)
 {
 	char *dest;
-	char str[20];
+	char *str;
 	int i;
 	int p;
 	char temp;
 
 	p = n;
 	i = 0;
+	str =(char*)malloc(sizeof(char)*150);
 	while (p / 10 > 9)
 	{
 		p = p / 10;
