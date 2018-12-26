@@ -1,39 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/25 12:03:54 by shamidan          #+#    #+#             */
+/*   Updated: 2018/12/26 15:25:19 by shamidan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-///not complete
 #include "libft.h"
 
-char    *ft_itoa(int n)
+int		ft_nbr_len(int n)
 {
-	char *dest;
-	char *str;
-	int i;
-	int p;
-	char temp;
+	int		i;
 
-	p = n;
-	i = 0;
-	str =(char*)malloc(sizeof(char)*150);
-	while (p / 10 > 9)
-	{
-		p = p / 10;
-		str[i] = (p % 10) + '0' ; 
-		i++;
-	}
-	str[i] = p+ '0'; 
-	str[i+1] ='\0';
-	dest = malloc((i));
-  	i=0;
+	i = 1;
 	if (n < 0)
-	{	
-		dest[0] = '-';
- 		i = 1;
-	}
-	while (i < (str[ft_strlen(str)/2]))
 	{
-		temp = dest[i];
- 		dest[i] = dest[ (str[ft_strlen(str)/2]) - i];
-		dest[(str[ft_strlen(str)/2]) - i] = dest[i]; 
 		i++;
-	}	
-	return (dest);
+		n = n * -1;
+	}
+	while (n > 9)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+int		ft_div(int len)
+{
+	int		i;
+
+	i = 1;
+	if (len == 1)
+		return (1);
+	while (len > 1)
+	{
+		i = i * 10;
+		len--;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	int		i;
+	int		len;
+	int		len2;
+	char	*result;
+
+	i = 0;
+	len = ft_nbr_len(n);
+	len2 = len;
+	if ((result = (char*)malloc(sizeof(char) * (len + 1))) == NULL)
+		return (NULL);
+	if (n == -2147483648)
+		return ("-2147483648");
+	if (n < 0)
+	{
+		n = n * -1;
+		result[0] = '-';
+		i++;
+		len--;
+	}
+	while (i < len2)
+		result[i++] = ((n / ft_div(len--)) % 10) + 48;
+	result[i] = '\0';
+	return (result);
 }
