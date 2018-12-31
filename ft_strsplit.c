@@ -6,57 +6,112 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 17:08:20 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/24 16:07:36 by shamidan         ###   ########.fr       */
+/*   Updated: 2018/12/31 18:23:11 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
+#include "libft.h"
 #include "ft_strlen.c"
 #include <string.h>
-//                                to complte
-#include <stdio.h>
-char    **ft_strsplit(char const *s)//, char c)
+int calculer_nbre_mot(char const * s)
 {
-//Description Alloue (avec malloc(3)) et retourne un tableau de chaînes de
-//caractères “fraiches” (toutes terminées par un ’\0’, le tableau
-//également donc) résultant de la découpe de s selon le caractère
-//c. Si l’allocation echoue, la fonction retourne NULL. Exemple :
-//ft_strsplit("*salut*les***etudiants*", ’*’) renvoie
-//le tableau ["salut", "les", "etudiants"].
-//Param. #1 La chaîne de caractères à découper.
-//Param. #2 Le caractère selon lequel découper la chaîne.
-//Retour Le tableau de chaînes de caractères “fraiches” résultant de la
-//découpe.
-//Fonctions libc malloc(3), free(3)
+	return (2);
+}
+#include <stdio.h>
+char    **ft_strsplit(char const *s, char c)
+{
 
-char	*str;
-int len;
-int i;
-int j;
-int k;
+	char	**str;
+	int n = calculer_nbre_mot(s);
+	str= malloc((n+1)*(sizeof(char *)));
+	int i;
+	i=0;
+	int  longueur_mot1 =5;
+	str[i] = malloc((longueur_mot1 +1)*(sizeof(char ) ));
+	str[n] =NULL;
+	int  longueur_mot2 =3;
+	str[i] = malloc((longueur_mot2 +1)*(sizeof(char ) ));
+	str[n] =NULL;
+	char	const *mot1 = s + 1 ;
+	char	const *mot2 = s + 9 ;
 
-str = (char*)s;
-len = ft_strlen(str);
-str = malloc(sizeof(char *) * len);
+//	calculer le nombre de mots 
 
 
-i = 0;
-j = 0;
-//k = ft_atoi(&c);
+
+	strncpy(str[i],mot1,longueur_mot1);
+	++i;	
+	//strncpy(str[i],mot2,longueur_mot2);
+	//++i;
+	
+//	printf("[%s]",s);
+/*
+ str = (char**)s;
+	i = 0;
+	j = 0;
+
+
+
+	while (str[i] != '\0')
+	{
+		while (*str[i] == c)
+		{
+			*str[i] = '\0';
+		}
+		i++;
+
+	}
+	
+	
+	
+printf("[%p]",str);	
+	
+*/	
+	
+	
+	
+return (str);
+	
+	/*
+	
+	
+	if ( str[i] == c && str[i+1] != c)
+		i++;
+	dest =(char **)malloc(sizeof(char ) * ft_strlen(s) +i);
+	while (str[i] != '\0')
+	{
+		while (str[i] == c)
+		{
+			dest[j] = str[i];
+			j++;
+			i++;
+		}
+		while (str[i] != c)
+		{
+			dest[j] = str[i];
+			printf("[%c]",dest[j]);
+			j++;
+			i++;
+		}
+	}
+free(dest);
+return (dest);
+//free(dest);
+
+
 k = '*';
 ///on compte les mots
-
+if (str[i] == '\0')
+	 return (NULL);
 while (str[i] != '\0')
 {	
-while (str[i] == k)
+while (str[i] == c)
 	i++;
 
-if ( str[i] == k && str[i+1] != k)
+if ( str[i] == c && str[i+1] != c)
 	j++;
 }
 
 printf("[%d]",j);
 //printf("[%c]",c);
-
-return (NULL);
-
+*/
 }
