@@ -5,69 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/25 12:03:54 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/26 15:25:19 by shamidan         ###   ########.fr       */
+/*   Created: 2018/12/24 11:29:16 by shamidan          #+#    #+#             */
+/*   Updated: 2019/01/01 13:59:18 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nbr_len(int n)
-{
-	int		i;
-
-	i = 1;
-	if (n < 0)
-	{
-		i++;
-		n = n * -1;
-	}
-	while (n > 9)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-
-int		ft_div(int len)
-{
-	int		i;
-
-	i = 1;
-	if (len == 1)
-		return (1);
-	while (len > 1)
-	{
-		i = i * 10;
-		len--;
-	}
-	return (i);
-}
-
 char	*ft_itoa(int n)
 {
+	char	begin[12];
 	int		i;
-	int		len;
-	int		len2;
-	char	*result;
+	int		nbr;
+	char	*str;
 
+	nbr = n;
 	i = 0;
-	len = ft_nbr_len(n);
-	len2 = len;
-	if ((result = (char*)malloc(sizeof(char) * (len + 1))) == NULL)
-		return (NULL);
+	n < 0 ? n = n * -1 : n;
+	if (n == 0)
+		return ("0");
 	if (n == -2147483648)
 		return ("-2147483648");
-	if (n < 0)
+	while (n > 9)
 	{
-		n = n * -1;
-		result[0] = '-';
-		i++;
-		len--;
+		begin[i++] = n % 10 + '0';
+		n = n / 10;
 	}
-	while (i < len2)
-		result[i++] = ((n / ft_div(len--)) % 10) + 48;
-	result[i] = '\0';
-	return (result);
+	begin[i] = n + '0';
+	n = 0;
+	str = (char*)malloc(sizeof(char) * (i + 2));
+	nbr < 0 ? str[n++] = '-' : str[n];
+	while (0 <= i)
+		str[n++] = begin[i--];
+	str[n] = '\0';
+	return (str);
 }
