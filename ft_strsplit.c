@@ -6,112 +6,127 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 17:08:20 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/31 18:23:11 by shamidan         ###   ########.fr       */
+/*   Updated: 2019/01/02 17:12:51 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include "ft_strlen.c"
-#include <string.h>
-int calculer_nbre_mot(char const * s)
-{
-	return (2);
-}
+//#include "ft_strlen.c"
+//#include <string.h>
 #include <stdio.h>
+//char    *ft_strncpy(char *s1, const char *s2, size_t n);
+
+int calculer_nbre_mot(char const * s, char c)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[0] != c)
+			j = 1;
+		if ((s[i] == c && s[i + 1] != c))
+			j++;
+		i++;
+	}	
+	printf("[J[%d]]",j);
+	printf("[I[%d]]",i);
+	return (j);
+}
+
+int  *index_mot(char const *s, char c)
+{
+//trouver index de chaque chaine 
+
+	int	i;
+	int	j;
+	int *ptr;
+	int tab[300];
+	int	
+	ptr = tab;
+	i = 1;
+	j = 0;
+	while (s[i])
+	{
+		if (s[0] != c)
+		{	
+			tab[j]= 0;
+
+		}
+		if ((s[i] == c && s[i + 1] != c))
+		{		
+			tab[j]= i+1;
+			j++;
+		}	
+		i++;
+	}
+	i=0;
+	while (tab[i])
+	{
+		//printf("{%d}", tab[i]);
+		i++;
+	}
+	return (ptr);
+}
+//  reucpere la longueur
+int  longueur_mots(char const *s, char c, int index)
+{
+	int	i;
+
+	i = index;
+	while (s[i] != c)
+	{
+		i++;
+
+	}
+	return (i - index);
+}
+
 char    **ft_strsplit(char const *s, char c)
 {
-
 	char	**str;
-	int n = calculer_nbre_mot(s);
-	str= malloc((n+1)*(sizeof(char *)));
+	int n;
 	int i;
+	int *ptr;
+	int index;
+
+	index = 7;
+	ptr =&index;
+	index_mot(s, c);	
+	printf("{%d}", longueur_mots(s,  c,  index));
+	 if ((s == 0) || (c == 0))
+		  return (NULL);
+	n = calculer_nbre_mot(s, c);
+	str= malloc((n+1)*(sizeof(char *)));
 	i=0;
+	while (i < calculer_nbre_mot(s,c))
+	{
+		str[i] = malloc((longueur_mot1 +1)*(sizeof(char ) ));	
+		ft_strncpy(str[i],mot1,longueur_mot(s, c, i));
+		i++;
+	}
+	/*
 	int  longueur_mot1 =5;
 	str[i] = malloc((longueur_mot1 +1)*(sizeof(char ) ));
-	str[n] =NULL;
-	int  longueur_mot2 =3;
-	str[i] = malloc((longueur_mot2 +1)*(sizeof(char ) ));
+	int  longueur_mot2 =6;
+	str[1] = malloc((longueur_mot2 +1)*(sizeof(char ) ));
+	int  longueur_mot3 =6;
+	str[2] = malloc((longueur_mot3 +1)*(sizeof(char ) ));
 	str[n] =NULL;
 	char	const *mot1 = s + 1 ;
-	char	const *mot2 = s + 9 ;
-
-//	calculer le nombre de mots 
-
+	char	const *mot2 = s + 7 ;
+	char	const *mot3 = s + 14 ;
 
 
-	strncpy(str[i],mot1,longueur_mot1);
-	++i;	
-	//strncpy(str[i],mot2,longueur_mot2);
+	ft_strncpy(str[i],mot1,longueur_mot1);
+	i++;	
+	ft_strncpy(str[i],mot2,longueur_mot2);
+	ft_strncpy(str[2],mot3,longueur_mot3);
 	//++i;
 	
 //	printf("[%s]",s);
-/*
- str = (char**)s;
-	i = 0;
-	j = 0;
-
-
-
-	while (str[i] != '\0')
-	{
-		while (*str[i] == c)
-		{
-			*str[i] = '\0';
-		}
-		i++;
-
-	}
-	
-	
-	
-printf("[%p]",str);	
-	
 */	
 	
-	
-	
 return (str);
-	
-	/*
-	
-	
-	if ( str[i] == c && str[i+1] != c)
-		i++;
-	dest =(char **)malloc(sizeof(char ) * ft_strlen(s) +i);
-	while (str[i] != '\0')
-	{
-		while (str[i] == c)
-		{
-			dest[j] = str[i];
-			j++;
-			i++;
-		}
-		while (str[i] != c)
-		{
-			dest[j] = str[i];
-			printf("[%c]",dest[j]);
-			j++;
-			i++;
-		}
-	}
-free(dest);
-return (dest);
-//free(dest);
-
-
-k = '*';
-///on compte les mots
-if (str[i] == '\0')
-	 return (NULL);
-while (str[i] != '\0')
-{	
-while (str[i] == c)
-	i++;
-
-if ( str[i] == c && str[i+1] != c)
-	j++;
-}
-
-printf("[%d]",j);
-//printf("[%c]",c);
-*/
 }
