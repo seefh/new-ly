@@ -6,7 +6,7 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:11:38 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/20 14:29:30 by shamidan         ###   ########.fr       */
+/*   Updated: 2019/01/29 11:32:21 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strequ(char const *s1, char const *s2)
 {
-	if (ft_strcmp(s1, s2) == 0)
+	if (s1 && s2 && ft_strcmp(s1, s2) == 0)
 		return (1);
 	else
 		return (0);

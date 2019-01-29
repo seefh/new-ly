@@ -6,7 +6,7 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:40:58 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/20 14:41:05 by shamidan         ###   ########.fr       */
+/*   Updated: 2019/01/29 11:22:04 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*s2;
 	unsigned int	i;
 
+	s2 = NULL;
 	i = 0;
-	s1 = (char *)s;
-	s2 = malloc(sizeof(s1));
-	while (s1[i] != '\0')
+	if (f && s)
 	{
-		s2[i] = f(i, s1[i]);
-		i++;
+		s1 = (char *)s;
+		s2 = malloc(sizeof(s1));
+		while (s1[i] != '\0')
+		{
+			s2[i] = f(i, s1[i]);
+			i++;
+		}
 	}
 	return (s2);
 }

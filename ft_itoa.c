@@ -6,37 +6,62 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 11:29:16 by shamidan          #+#    #+#             */
-/*   Updated: 2019/01/01 13:59:18 by shamidan         ###   ########.fr       */
+/*   Updated: 2019/01/29 14:00:14 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static char			*ft_count(int n)
 {
-	char	begin[12];
-	int		i;
-	int		nbr;
-	char	*str;
+	int				i;
+	int				v;
+	unsigned int	nb;
+	char			*tab;
 
-	nbr = n;
-	i = 0;
-	n < 0 ? n = n * -1 : n;
-	if (n == 0)
-		return ("0");
-	if (n == -2147483648)
-		return ("-2147483648");
-	while (n > 9)
+	v = 1;
+	i = 1;
+	if (n < 0)
 	{
-		begin[i++] = n % 10 + '0';
-		n = n / 10;
+		n = -n;
+		i++;
 	}
-	begin[i] = n + '0';
-	n = 0;
-	str = (char*)malloc(sizeof(char) * (i + 2));
-	nbr < 0 ? str[n++] = '-' : str[n];
-	while (0 <= i)
-		str[n++] = begin[i--];
-	str[n] = '\0';
-	return (str);
+	nb = n;
+	while (nb / v >= 10)
+	{
+		v = v * 10;
+		i++;
+	}
+	if (!(tab = (char*)malloc(sizeof(*tab) * i + 1)))
+		return (0);
+	return (tab);
+}
+
+char				*ft_itoa(int n)
+{
+	int				v;
+	unsigned int	nb;
+	int				i;
+	char			*tab;
+
+	if (!(tab = ft_count(n)))
+		return (0);
+	v = 1;
+	if (n < 0)
+		nb = -n;
+	else
+		nb = n;
+	while (nb / v >= 10)
+		v = v * 10;
+	i = 0;
+	if (n < 0)
+		tab[i++] = '-';
+	while (v >= 1)
+	{
+		tab[i++] = (nb / v) + '0';
+		nb = nb % v;
+		v = v / 10;
+	}
+	tab[i] = '\0';
+	return (tab);
 }
