@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 14:50:08 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/10 17:46:10 by shamidan         ###   ########.fr       */
+/*   Created: 2019/02/07 09:58:32 by shamidan          #+#    #+#             */
+/*   Updated: 2019/02/07 10:01:50 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	size_t		i;
+	size_t	i;
+	char	*dst;
 
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	dst = dest;
+	while (*src && i < n)
 	{
-		dest[i] = src[i];
+		*dest++ = *src++;
 		i++;
 	}
 	while (i < n)
 	{
-		dest[i] = '\0';
+		*dest++ = '\0';
 		i++;
 	}
-	return (dest);
+	return (dst);
 }

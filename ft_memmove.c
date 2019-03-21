@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 14:49:40 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/07 12:01:18 by shamidan         ###   ########.fr       */
+/*   Created: 2019/02/05 12:19:12 by shamidan          #+#    #+#             */
+/*   Updated: 2019/02/05 12:45:26 by shamidan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,15 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*source;
-	char	*destination;
-	char	temp[len];
-	size_t	i;
+	char	*str;
 
-	destination = (char *)dst;
-	source = (char *)src;
-	i = 0;
-	while (i < len)
-	{
-		{
-			temp[i] = source[i];
-		}
-		i++;
-	}
-	i = 0;
-	while (i < len)
-	{
-		destination[i] = temp[i];
-		i++;
-	}
-	return (destination);
+	if (len == 0)
+		return (dst);
+	str = (char *)malloc(len);
+	if (!str)
+		return (dst);
+	ft_memcpy(str, src, len);
+	ft_memcpy(dst, str, len);
+	free(str);
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: shamidan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 17:17:49 by shamidan          #+#    #+#             */
-/*   Updated: 2018/12/17 17:34:25 by shamidan         ###   ########.fr       */
+/*   Updated: 2019/02/25 13:11:14 by aachir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char const *s, int fd)
 	int		i;
 	char	*c;
 
+	if (s == NULL)
+		return ;
 	c = (char*)s;
 	i = 0;
 	while (c[i] != '\0')
